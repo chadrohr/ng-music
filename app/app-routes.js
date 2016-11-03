@@ -23,7 +23,7 @@ angular.module('ng-music')
             })
         
             .state('album',{
-                url: '/album:id',
+                url: '/albums/:id',
                 component: 'album'
 
             })

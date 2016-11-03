@@ -1,14 +1,14 @@
 <div class="album-details" ng-model="albumController">
 	<div class="jumbotron text-center">
+		<img src="https://s-media-cache-ak0.pinimg.com/originals/e2/6d/87/e26d873ee68fbcd9dc1c40d8b0c6b3b4.gif" alt="" ng-if="!$ctrl.album">
 		<h1>{{$ctrl.album.collectionName}}</h1>
 		<h3>By : {{$ctrl.album.artistName}}</h3>
-
 		<img ng-src="{{$ctrl.album.artworkUrl100}}" alt="{{album.collectionName}}">
 		<ul ng-repeat="song in $ctrl.album.tracks" style="list-style-type: none;">
+			
 			<li ng-show="song.trackName">
 				{{ song.trackName }}<br>
-				<audio src="{{ song.previewUrl }}" controls></audio><br>
-				Buy for: {{ song.trackPrice | currency}}<br>
+				<audio src="{{ song.previewUrl }}" controls></audio><br> Buy for: {{ song.trackPrice | currency}}<br>
 			</li>
 
 		</ul>

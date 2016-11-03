@@ -1,29 +1,36 @@
 angular.module('ng-music')
-    .service('MusicService', function () {
+    .service('MusicService', function ($http) {
         var ms = this;
+        var albumsUrl = 'http://itunes.apple.com/search?media=music&entity=album&term='
+        var albumUrl = 'http://itunes.apple.com/lookup?entity=song&id='
+        var url = '//bcw-getter.herokuapp.com/?url=';
 
-        ms.getAllAlbums = function () {
+
+        var albumsApilUrl = url + encodeURIComponent(albumsUrl);
+        var albumApiUrl = url + encodeURIComponent(albumUrl);
+        ms.getAllAlbums = function (term, cb) {
             // Go Ahead and return the albums
-            return albums
+
+            $http.get(albumsApilUrl + term).then(cb)
+
+
         }
 
-        ms.getAlbumById = function (id) {
-        
-            for (i = 0; i < albums.length; i++) {
-                let intId = parseInt(id)
-                if (albums[i].collectionId == intId) {
-                    console.log(albums[i])
-                    return albums[i]
-                }
-            }
+        ms.getAlbumById = function (id, cb) {
+
+            $http.get(albumApiUrl + id).then(cb)
+
+
         }
+        // return { error: 'Bad ID' }
+    
 
         //You should return the album by its id
 
 
 
 
-    
+
 
         // Once you finish these two functions head over to app-routes and make sure your albums state is rendering the <albums> component
 
